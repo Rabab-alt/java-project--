@@ -1,0 +1,184 @@
+package com.mycompany.mavenproject1;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author user
+ */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class StudentManagementSystem {
+    private List<Student> students;
+    String adminPassword;
+
+    public StudentManagementSystem(String adminPassword) {
+        this.adminPassword = adminPassword;
+        this.students = new ArrayList<>();
+    }
+
+    
+    public void addStudentRecord() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Student ID:");
+        String id = scanner.nextLine();
+        System.out.println("Enter Student Name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter Student Age:");
+        int age = scanner.nextInt();
+        
+        System.out.println("Enter Student Course:");
+        String course = scanner.nextLine();
+ 
+       Student student = new Student(id, name);
+        students.add((Student) student);
+        System.out.println("Student record added successfully.");
+    }
+
+    
+    public void searchStudentRecord() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Student ID or Name to search:");
+        String query = scanner.nextLine();
+
+        boolean found = false;
+        for (Student student : students) {
+            if (student.getId().equalsIgnoreCase(query) || student.getName().equalsIgnoreCase(query)) {
+                System.out.println("Student found: " + student);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No matching student found.");
+        }
+    }
+     public void modifyStudentRecord() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Student ID to modify:");
+        String id = scanner.nextLine();
+
+        for (Student student : students) {
+            if (student.getId().equalsIgnoreCase(id)) {
+                System.out.println("Current data: " + student);
+                System.out.println("Enter new name (leave blank to skip):");
+                String name = scanner.nextLine();
+                if (!name.isEmpty()) student.setName(name);
+
+               
+               
+
+                System.out.println("Student record updated.");
+                return;
+            }
+        }
+    System.out.println("Student with ID not found.");
+    }
+
+    
+    public void generateMarkSheet() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Student ID to generate mark sheet:");
+        String id = scanner.nextLine();
+
+        for (Student student : students) {
+            if (student.getId().equalsIgnoreCase(id)) {
+                System.out.println("Enter number of subjects:");
+                int n = scanner.nextInt();
+                scanner.nextLine();
+
+                for (int i = 0; i < n; i++) {
+                    System.out.print("Enter subject name: ");
+                    String subject = scanner.nextLine();
+                    System.out.print("Enter marks for " + subject + ": ");
+                    int mark = scanner.nextInt();
+                    scanner.nextLine();
+                    student.setMarks(subject, mark);
+                }
+
+                System.out.println("Mark sheet for " + student.getName() + ":");
+                for (var entry : student.getMarks().entrySet()) {
+                    System.out.println(entry.getKey() + ": " + entry.getValue());
+                }
+
+                int total = student.getMarks().values().stream().mapToInt(Integer::intValue).sum();
+                double average = (double) total / student.getMarks().size();
+                System.out.println("Total: " + total);
+                System.out.println("Average: " + average);
+                return;
+            }
+        }
+
+        System.out.println("Student with ID not found.");
+    }
+
+    
+    public void deleteStudentRecord() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Student ID to delete:");
+        String id = scanner.nextLine();
+
+        for (Student student : students) {
+            if (student.getId().equalsIgnoreCase(id)) {
+                students.remove(student);
+                System.out.println("Student record deleted.");
+                return;
+            }
+        }
+
+        System.out.println("Student with ID not found.");
+    }
+    public void changeAdminPassword() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter current admin password:");
+    String currentPassword = scanner.nextLine();
+
+    if (!currentPassword.equals(adminPassword)) {
+        System.out.println("Incorrect password. Access denied.");
+        return;
+    }
+
+    System.out.println("Enter new password:");
+    String newPassword = scanner.nextLine();
+
+    if (newPassword.isEmpty()) {
+        System.out.println("Password cannot be empty.");
+        return;
+    }
+
+    adminPassword = newPassword;
+    System.out.println("Admin password changed successfully.");
+}
+
+    private Object getId() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    private Object getName() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    private void setName(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+   
+public List<Student> getStudents() {
+    return students;
+}
+    
+
+    private void setMarks(String subject, int mark) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    private Object getMarks() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    
+}
+    }
+
