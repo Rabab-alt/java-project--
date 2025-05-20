@@ -1,5 +1,5 @@
 package student;
-
+// first let us import libraries
 import db.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
+// create the student class
 public class Student {
 
     Connection con = MyConnection.getConnection();
