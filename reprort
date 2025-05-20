@@ -1,0 +1,31 @@
+Student Management System
+
+This project is a desktop application developed using Java and the NetBeans IDE. It is designed to help schools or institutions manage student records more easily and efficiently.
+
+The system allows users to add, edit, delete, and view student information. It also includes features like searching and filtering students based on specific criteria.
+
+Technologies Used:
+
+Java Standard Edition (Java SE)
+
+NetBeans IDE
+
+MySQL Database
+
+JDBC (Java Database Connectivity)
+
+Java Swing for the graphical user interface
+
+Main Features:
+
+Add new student records
+
+Edit existing student details
+
+Delete student records
+
+View a list of all students
+
+Search and filter students
+
+Basic form validation to ensure correct input
