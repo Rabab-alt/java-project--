@@ -1,5 +1,5 @@
 package student;
-// first let us import libraries
+
 import db.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-// create the student class
+
 public class Student {
 
     Connection con = MyConnection.getConnection();
@@ -89,6 +89,7 @@ public class Student {
         return false;
     }
 
+    //check student id if its already existed
     public boolean isIdExist(int id) {
         try {
             ps = con.prepareStatement("select * from student where id = ?");
@@ -131,7 +132,6 @@ public class Student {
         }
     }
     //update student value
-
     public void update(int id, String sname, String date, String gender, String email,
             String phone, String father, String address1, String address2, String imagePath) {
         String sql = "update student set name=?, date_of_birth=?, gender=?,email=?,phone=?,father_name=?, "
