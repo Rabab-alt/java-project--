@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author user
  */
+//First let us start with the class home that extends from JFrame
 public class Home extends javax.swing.JFrame {
     Student student = new Student();
     int xx, xy;
